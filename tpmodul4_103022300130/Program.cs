@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/*
 class KodePos
 {
     private static Dictionary<string, int> tabelKodePos = new Dictionary<string, int>
@@ -64,4 +65,63 @@ class MainClass
             Console.WriteLine("Kelurahan tidak ditemukan.");
         }
     }
+}
+*/
+
+public enum DoorState
+{
+    terkunci,
+    terbuka
+}
+
+public class DoorMachine
+{
+    DoorState state;
+
+    public DoorMachine()
+    {
+        state = DoorState.terkunci;
+    }
+
+
+    public void bukaPintu()
+    {
+        if (state == DoorState.terkunci) {
+
+            state = DoorState.terbuka;
+            Console.WriteLine("Membuka pintu!");
+
+        } else {
+            Console.WriteLine("Pintu tidak terkunci!");
+            Console.WriteLine("Membuka pintu...");
+        }
+    }
+
+    public void kunciPintu()
+    {
+
+        if (state == DoorState.terkunci)
+        {
+            Console.WriteLine("Pintu sudah terkunci!");
+        }
+        else {
+            state = DoorState.terkunci;
+            Console.WriteLine("Sukses mengunci pintu!");
+        }
+    }
+}
+
+class Program
+{
+    public static void Main(String[] args) {
+
+        DoorMachine door = new DoorMachine();
+
+        Console.WriteLine("Mencoba mengunci pintu\n");
+        door.kunciPintu();
+
+        Console.WriteLine("Mencoba membuka pintu\n");
+        door.bukaPintu();
+    }
+
 }
